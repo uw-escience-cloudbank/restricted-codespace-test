@@ -38,14 +38,14 @@
       ],
       "settings": {
         // Suppress the "Sign in to Claude" screen since we're using a token
-        "claude-code.disableLoginPrompt": true
+        "claudeCode.disableLoginPrompt": true
       }
     }
   },
 
-  // Install uv and copy claude settings after the container is created
   "postCreateCommand": {
     "install-uv": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    // https://code.claude.com/docs/en/model-config#control-the-model-users-run-on
     "claude-settings": "mkdir -p ~/.claude && cp .devcontainer/claude-settings.json ~/.claude/settings.json"
   }
 }
