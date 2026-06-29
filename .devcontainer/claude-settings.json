@@ -1,4 +1,9 @@
 {
-  "availableModels": ["cloudbank-claude-haiku-4-5", "cloudbank-claude-sonnet-4-6"],
-  "model": "cloudbank-claude-haiku-4-5"
+  "model": "cloudbank-claude-haiku-4-5",
+  "enforceAvailableModels": true,
+  "availableModels": [
+    "cloudbank-claude-haiku-4-5",
+    "cloudbank-claude-sonnet-4-6"
+  ],
+  "theme": "auto"
 }
