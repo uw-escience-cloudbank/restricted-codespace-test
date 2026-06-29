@@ -2,6 +2,12 @@
   "name": "CloudBank Workshop",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 
+  // Install claude and uv for terminal work
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
+    "ghcr.io/astral-sh/uv:1": {}
+  },
+
   // Prompt each user to set their personal token if not already set
   "secrets": {
     "ANTHROPIC_AUTH_TOKEN": {
@@ -18,7 +24,9 @@
     "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
     "ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}",
     // Optional: disable model discovery prompt, enable gateway model list
-    "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
+    // NOTE: doesn't seem to work with custom models yet ...
+    // https://github.com/BerriAI/litellm/issues/27180
+    // "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
     // Optional: disable experimental betas if your gateway rejects them
     "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS": "1"
   },
@@ -27,6 +35,7 @@
     "vscode": {
       "extensions": [
         "anthropic.claude-code",
+        "ms-python.python",
         "ms-toolsai.jupyter"
       ],
       "settings": {
@@ -34,5 +43,8 @@
         "claude-code.disableLoginPrompt": true
       }
     }
-  }
+  },
+
+  // Copy the claude-settings.json file to the user's home directory for the extension to pick up
+  "postCreateCommand": "mkdir -p ~/.claude && cp .devcontainer/claude-settings.json ~/.claude/settings.json"
 }
