@@ -1,13 +1,13 @@
 {
-  "availableModels": [
-    "cloudbank-claude-haiku-4-5",
-    "cloudbank-claude-sonnet-4-6"
-  ],
-  "model": "cloudbank-claude-haiku-4-5",
-  "enforceAvailableModels": true,
   "env": {
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "cloudbank-claude-haiku-4-5",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "cloudbank-claude-sonnet-4-6"
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "cloudbank-claude-sonnet-4-6",
+    "ANTHROPIC_MODEL": "haiku"
   },
+  "availableModels": [
+    "haiku",
+    "sonnet"
+  ],
+  "enforceAvailableModels": true,
   "theme": "auto"
 }
