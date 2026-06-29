@@ -23,9 +23,8 @@
     "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
     "ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}",
     // Optional: disable model discovery prompt, enable gateway model list
-    // NOTE: doesn't seem to work with custom models yet ...
-    // https://github.com/BerriAI/litellm/issues/27180
-    // "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
+    // NOTE: can try to enable after liteLLM is updated (https://github.com/BerriAI/litellm/issues/27180)
+    "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "0",
     // Optional: disable experimental betas if your gateway rejects them
     "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS": "1"
   },
