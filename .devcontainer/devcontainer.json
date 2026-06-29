@@ -1,0 +1,38 @@
+{
+  "name": "CloudBank Workshop",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  // Prompt each user to set their personal token if not already set
+  "secrets": {
+    "ANTHROPIC_AUTH_TOKEN": {
+      "description": "Your personal LiteLLM virtual key for Claude Code"
+    },
+    "ANTHROPIC_BASE_URL": {
+      "description": "The URL of your LiteLLM gateway for Claude Code"
+    }
+  },
+
+  // Inject env vars — ANTHROPIC_BASE_URL is shared (org secret or hardcoded),
+  // ANTHROPIC_AUTH_TOKEN comes from each user's personal Codespaces secret
+  "remoteEnv": {
+    "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
+    "ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}",
+    // Optional: disable model discovery prompt, enable gateway model list
+    "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
+    // Optional: disable experimental betas if your gateway rejects them
+    "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS": "1"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        // Suppress the "Sign in to Claude" screen since we're using a token
+        "claude-code.disableLoginPrompt": true
+      }
+    }
+  }
+}
