@@ -14,7 +14,7 @@
       "description": "Your personal LiteLLM virtual key for Claude Code"
     },
     "ANTHROPIC_BASE_URL": {
-      "description": "The URL of your LiteLLM gateway for Claude Code"
+      "description": "(Pre-set as an organization secret)"
     }
   },
 
@@ -45,6 +45,10 @@
     }
   },
 
-  // Copy the claude-settings.json file to the user's home directory for the extension to pick up
-  "postCreateCommand": "mkdir -p ~/.claude && cp .devcontainer/claude-settings.json ~/.claude/settings.json"
+  // Install uv and copy claude settings after the container is created
+  "postCreateCommand": {
+    "install-uv": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "claude-settings": "mkdir -p ~/.claude && cp .devcontainer/claude-settings.json ~/.claude/settings.json"
+  }
 }
+
