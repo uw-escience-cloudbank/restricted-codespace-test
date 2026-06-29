@@ -4,8 +4,7 @@
 
   // Install claude and uv for terminal work
   "features": {
-    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
-    "ghcr.io/astral-sh/uv:1": {}
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
   },
 
   // Prompt each user to set their personal token if not already set
