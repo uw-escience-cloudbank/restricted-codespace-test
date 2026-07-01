@@ -1,10 +1,19 @@
+import argparse
 import openai
 import os
 import base64
+from dotenv import load_dotenv
+
+# Assumes you have set your ANTHROPIC_AUTH_TOKEN and ANTHROPIC_BASE_URL in a .env file or as environment variables
+load_dotenv()
+
+parser = argparse.ArgumentParser(description="Send a chat completion via the CloudBank LiteLLM proxy.")
+parser.add_argument("--model", default="cloudbank-claude-haiku-4-5", help="Model name (e.g. cloudbank-claude-haiku-4-5)")
+args = parser.parse_args()
 
 client = openai.OpenAI(
     api_key=os.environ.get("ANTHROPIC_AUTH_TOKEN"),
-	base_url=os.environ.get("ANTHROPIC_BASE_URL")
+    base_url=os.environ.get("ANTHROPIC_BASE_URL")
 )
 
 # Helper function to encode images to base64
@@ -14,25 +23,21 @@ def encode_image(image_path):
 
 # Example with text only
 response = client.chat.completions.create(
-    model="cloudbank-claude-haiku-4-5",
+    model=args.model,
     messages=[
-    {
-        "role": "user",
-        "content": "write me a haiku about my spunky grey cat PJ"
-    },
-    {
-        "role": "assistant",
-        "content": "# PJ\n\nSilver whiskers twitch—\ngrey pounce, fearless and nimble,\nspunk in soft fur coiled"
-    }
-]
+        {
+            "role": "user",
+            "content": "write me a haiku about my spunky grey cat PJ"
+        }
+    ]
 )
 
-print(response)
+print(response.choices[0].message.content)
 
 # Example with image or PDF (uncomment and provide file path to use)
 # base64_file = encode_image("path/to/your/file.jpg")  # or .pdf
 # response_with_file = client.chat.completions.create(
-#     model="cloudbank-claude-haiku-4-5",
+#     model=args.model,
 #     messages=[
 #         {
 #             "role": "user",

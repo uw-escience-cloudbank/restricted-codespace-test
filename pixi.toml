@@ -1,0 +1,16 @@
+[workspace]
+authors = ["Scott Henderson <3924836+scottyhq@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "restricted-codespace-test"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+test="python ssec-litellm-bedrock-script.py"
+list-models="python list-models.py"
+test-sonnet="python ssec-litellm-bedrock-script.py --model cloudbank-claude-sonnet-4-6"
+
+
+[dependencies]
+openai = ">=2.44.0,<3"
+python-dotenv = ">=1.2.2,<2"
