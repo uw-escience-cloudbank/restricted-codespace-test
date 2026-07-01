@@ -10,15 +10,15 @@
   // Prompt each user to set their personal token if not already set
   "secrets": {
     "ANTHROPIC_AUTH_TOKEN": {
-      "description": "Your personal LiteLLM virtual key for Claude Code"
+      "description": "Your personal LiteLLM virtual key"
     },
     "ANTHROPIC_BASE_URL": {
-      "description": "(Pre-set as an organization secret)"
+      "description": "Your LiteLLM API URL"
     }
   },
 
-  // Inject env vars — ANTHROPIC_BASE_URL is shared (org secret or hardcoded),
-  // ANTHROPIC_AUTH_TOKEN comes from each user's personal Codespaces secret
+  // Inject env vars 
+  // ANTHROPIC_AUTH_TOKEN should be set as a User-level Codespaces Secret
   "remoteEnv": {
     "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
     "ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}",
